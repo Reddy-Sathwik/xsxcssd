@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Aggregator - Search Results</title>
+</head>
+<body>
+    <nav style="background-color: black;color: white;">
+        <a href="/">Home</a>
+        <a href="/sports">Sports</a>
+    </nav>
+    <h1>Search Results for "{{ query }}"</h1>
+    <ul>
+        {% if search_results %}
+            {% for article in search_results %}
+                <li>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.description }}</p>
+                    <a href="{{ article.url }}" target="_blank">Read more</a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <p>No results found for "{{ query }}".</p>
+        {% endif %}
+    </ul>
+</body>
+</html>

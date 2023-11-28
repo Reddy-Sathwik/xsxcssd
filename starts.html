@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.x-icon">
+    <style>
+        /* Add CSS styles for the navigation bar */
+        .navbar {
+            background-color: #333; /* Background color */
+            overflow: hidden;
+            display: flex;
+            padding: 10px 12px;
+            
+        }
+
+        .navbar a {
+            float: left; /* Float the links to the left */
+            display: block;
+            color: white; /* Text color */
+            text-align: center;
+            padding: 10px 12px; /* Padding around the links */
+            text-decoration: none;
+        }
+
+        /* Change the color of links on hover */
+        .navbar a:hover {
+            background-color:white;
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-color:white;">
+    <h1>News App</h1>
+    <div class="navbar">
+        <a href="/Home">Home</a>
+        <a href="/sports">Sports</a>
+        <a href="/entertainment">Entertainment</a>
+        <a href="/politics">Politics</a>
+        <a href="/Health">Health</a>
+        <a href="/Technology">Technology</a>
+        <a href="/Business">Business</a>
+        
+    </div>
+    <h1> News</h1>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <h3>{{ article.title }}</h3>
+                <img src="{{ article.urlToImage }}" style="height: 400px; width: 400px;">
+                <p>{{ article.description }}</p>
+                <a href="{{ article.url }}" target="_blank">Read more</a>
+            </li>
+        {% endfor %}
+</body>
+</html>
